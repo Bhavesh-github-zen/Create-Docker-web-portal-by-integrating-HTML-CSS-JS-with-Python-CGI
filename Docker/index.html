@@ -1,1 +1,76 @@
+<body >
+<style>
+body {
+      background-image: url('https://www.whitesourcesoftware.com/wp-content/media/2020/09/docker-in.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+}
 
+.input{
+     font-weight: bold;
+     font-style: italic;
+     font-size: 20px;
+}
+
+#in1 {
+     border-radius: 25px;
+     border: 2px solid #609;
+     padding: 20px; 
+     width: 600px;
+     height: 15px;    
+     background: rgba(255, 255, 255);
+}
+
+div {
+     background: rgba(0, 0, 0, 0.3);
+    
+}
+
+a {
+     text-decoration: none;
+     color: #FFFF00;
+     font-size: 18px;
+}
+
+h1 {
+     font-size: 75px;
+}
+
+h2 {
+     font-size: 50px;
+}
+</style>
+
+
+<script>
+function lw(){
+
+     var i = document.getElementById("in1").value
+
+     var xhr = new XMLHttpRequest();
+
+     xhr.open("GET", "http://192.168.43.74/cgi-bin/main.py?x=" + i, true);
+
+     xhr.send();
+
+     xhr.onload = function(){
+
+          var output = xhr.responseText;
+
+	  document.getElementById("d1").innerHTML = output;
+     }
+}
+</script>
+
+
+<h1>Welcome to this Docker Portal</h1>
+<h2>Enter any docker command here</h2>
+<input class="input"  id="in1"  size="105"/>
+<br/>
+<br/>
+<input type="image" style="width:7%"  onclick="lw()" src="submit.png" />
+<pre>
+    <b><a><div id="d1" ></div></a></b>
+</pre>
+</body>
